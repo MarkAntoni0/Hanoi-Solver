@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+void HanoiSolver(int countOfDisks, char source, char destination, char auxiliary){
+    if(countOfDisks==1){
+        printf("Move disk 1 from %c to %c\n",source,destination); //this line handles the top of the current count of disks in the recursion
+        return;
+    }
+    HanoiSolver(countOfDisks-1,source,auxiliary,destination);
+    printf("Move disk %d from %c to %c\n",countOfDisks,source,destination);//this line handles the bottom of the current count of disks in the recursion
+    HanoiSolver(countOfDisks-1,auxiliary,destination,source);
+}
+
+int main(){
+    int countOfDisks;
+    printf("Hanoi Solver by: Mark Tharwat\n");
+    printf("A: Source, B:Auxiliary, C:Destination \n");
+    printf("Insert the count of disks: \n");
+    scanf("%d",&countOfDisks);
+
+    HanoiSolver(countOfDisks,'A','C','B');
+
+return 0;
+}
